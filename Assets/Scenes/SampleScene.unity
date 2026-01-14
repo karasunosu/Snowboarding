@@ -943,8 +943,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595e4a7b4b220f44dbaaf435b530d5a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Controller
-  baseSpeed: 0
   baseTorque: 28
+  boostAmount: 10
+  surfaceEffector2D: {fileID: 1857648670}
 --- !u!1001 &1815366701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1002,6 +1003,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6a7eddb551ef1b4fa67429cbdd5cbe3, type: 3}
+--- !u!252 &1857648670 stripped
+SurfaceEffector2D:
+  m_CorrespondingSourceObject: {fileID: 7339534958920981310, guid: 9b70d5e2f6f2a5d49b1be3dc67cb8dd1, type: 3}
+  m_PrefabInstance: {fileID: 1399959841}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
