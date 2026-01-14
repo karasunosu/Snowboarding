@@ -12,6 +12,7 @@ public class Controller : MonoBehaviour
     Vector2 moveVector;
 
     float baseSpeed = 0f;
+    public bool canControl = true;
 
     void Start()
     {
@@ -25,8 +26,11 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
-        PlayerController();
-        Boost();
+        if (canControl)
+        {
+            PlayerController();
+            Boost();
+        }
     }
 
     void PlayerController()
