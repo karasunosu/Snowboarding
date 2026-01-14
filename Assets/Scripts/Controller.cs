@@ -14,6 +14,7 @@ public class Controller : MonoBehaviour
 
     float baseSpeed = 0f;
     public bool canControl = true;
+    int activePowerUpCount = 0;
 
     void Start()
     {
@@ -63,5 +64,37 @@ public class Controller : MonoBehaviour
     public void DisableControl()
     {
         canControl = false;
+    }
+
+    public void ActivatePowerUp(PowerUpSO power){
+        activePowerUpCount++;
+
+        if (power.getType().Equals("speed"))
+        {
+            baseSpeed += power.getValue();
+        }
+        if (power.getType().Equals("torque"))
+        {
+            baseTorque += power.getValue();
+        }
+    }
+
+    public void DeactivatePowerUp(PowerUpSO power)
+    {
+        activePowerUpCount--;
+
+        if (power.getType().Equals("speed"))
+        {
+            baseSpeed -= power.getValue();
+        }
+        if (power.getType().Equals("torque"))
+        {
+            baseTorque -= power.getValue();
+        }
+    }
+
+    public int getActivePowerUpCount()
+    {
+        return activePowerUpCount;
     }
 }
