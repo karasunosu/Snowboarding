@@ -10,6 +10,7 @@ public class Controller : MonoBehaviour
     Rigidbody2D myRigidbody;
     InputAction moveAction;
     Vector2 moveVector;
+    ScoreManager scoreManager;
 
     float baseSpeed = 0f;
     public bool canControl = true;
@@ -18,10 +19,9 @@ public class Controller : MonoBehaviour
     {
         moveAction = InputSystem.actions.FindAction("Move");
         moveAction.Enable();
-
         myRigidbody = GetComponent<Rigidbody2D>();
-        
         baseSpeed = surfaceEffector2D.speed;
+        scoreManager = GetComponent<ScoreManager>();
     }
 
     void Update()
@@ -30,6 +30,7 @@ public class Controller : MonoBehaviour
         {
             PlayerController();
             Boost();
+            scoreManager.CalculateFlips();
         }
     }
 
@@ -39,11 +40,11 @@ public class Controller : MonoBehaviour
         // xoay trai/phai
         if(moveVector.x < 0)
         {
-            myRigidbody.AddTorque(baseTorque);
+            myRigidbody.AddTorque(baseTorque * Time.deltaTime);
         }
         else if(moveVector.x > 0)
         {
-            myRigidbody.AddTorque(-baseTorque);
+            myRigidbody.AddTorque(-baseTorque * Time.deltaTime);
         }
     }
 
@@ -57,5 +58,10 @@ public class Controller : MonoBehaviour
         {
             surfaceEffector2D.speed = baseSpeed;
         }
+    }
+
+    public void DisableControl()
+    {
+        canControl = false;
     }
 }
