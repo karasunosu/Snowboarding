@@ -24,7 +24,6 @@ public class PowerUpEffect : MonoBehaviour
         {
             powerUpParticle.Stop();
         }
-        print(player.getActivePowerUpCount());
         preCount = curCount;
     }
 }

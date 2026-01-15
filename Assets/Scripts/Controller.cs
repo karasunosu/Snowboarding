@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class Controller : MonoBehaviour
 {
     [SerializeField] float baseTorque = 0f;
-    [SerializeField] float boostAmount = 0f;
+    [SerializeField] float boostSpeed = 0f;
     [SerializeField] SurfaceEffector2D surfaceEffector2D;
     
     Rigidbody2D myRigidbody;
@@ -53,7 +53,7 @@ public class Controller : MonoBehaviour
     {
         if(moveVector.y > 0)
         {
-            surfaceEffector2D.speed += boostAmount;
+            surfaceEffector2D.speed = boostSpeed;
         }
         else
         {
@@ -72,6 +72,7 @@ public class Controller : MonoBehaviour
         if (power.getType().Equals("speed"))
         {
             baseSpeed += power.getValue();
+            boostSpeed += power.getValue();
         }
         if (power.getType().Equals("torque"))
         {
@@ -86,6 +87,7 @@ public class Controller : MonoBehaviour
         if (power.getType().Equals("speed"))
         {
             baseSpeed -= power.getValue();
+            boostSpeed -= power.getValue();
         }
         if (power.getType().Equals("torque"))
         {
